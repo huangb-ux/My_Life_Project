@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "eamodio.gitlens",
+    "ritwickdey.LiveServer",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "ms-azuretools.vscode-docker",
+    "humao.rest-client",
+    "prisma.prisma",
+    "ms-python.python",
+    "msjsdiag.debugger-for-chrome",
+    "visualstudioexptteam.vscodeintellicode"
+  ]
+}
