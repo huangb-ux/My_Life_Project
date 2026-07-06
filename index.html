@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>咕咕嘎嘎 - 个人作品集</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 预加载动画 -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <img class="loading-logo" src="images/logo.png" alt="咕咕嘎嘎">
+        <div class="loading-progress-track">
+            <div class="loading-progress-fill"></div>
+        </div>
+        <div class="loading-text">THINKING</div>
+    </div>
+
+    <!-- 涟漪容器 -->
+    <div class="ripple-container" id="rippleContainer"></div>
+    <!-- 背景视频（双缓冲） -->
+    <div class="bg-video-container">
+        <video class="bg-video" id="bgVideo1" muted loop playsinline preload="auto">
+            <source src="video/网页1.mp4" type="video/mp4">
+        </video>
+        <video class="bg-video" id="bgVideo2" muted loop playsinline preload="none">
+            <source src="" type="video/mp4">
+        </video>
+        <div class="bg-overlay"></div>
+        <div class="bg-overlay-left"></div>
+        <div class="bg-overlay-right"></div>
+    </div>
+
+    <!-- 装饰效果 -->
+    <div class="particles" id="particles"></div>
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+    <div class="corner-decor top-left"></div>
+    <div class="corner-decor top-right"></div>
+    <div class="corner-decor bottom-left"></div>
+    <div class="corner-decor bottom-right"></div>
+
+    <!-- 顶部导航 -->
+    <header class="site-header">
+        <nav class="top-nav">
+            <div class="logo-wrapper" onclick="goToSlide(0)">
+                <img class="logo-img" src="images/logo.png" alt="咕咕嘎嘎">
+                <span class="site-name">咕咕嘎嘎</span>
+            </div>
+            <div class="nav-links">
+                <a class="active" onclick="goToSlide(0)">首页</a>
+                <a onclick="goToSlide(1)">作品</a>
+                <a onclick="goToSlide(2)">关于</a>
+                <a onclick="goToSlide(3)">评论区</a>
+                <a onclick="goToSlide(4)">致谢</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 主体内容 -->
+    <main>
+        <!-- 主Swiper -->
+        <div class="swiper main-swiper">
+            <div class="swiper-wrapper">
+                <!-- 第1页 首页 -->
+                <div class="swiper-slide slide-home">
+                    <section class="home-content">
+                        <h1 class="home-title glow-text animate-item animate-delay-1">咕咕嘎嘎</h1>
+                        <p class="home-subtitle typewriter animate-item animate-delay-2">个 人 作 品 集</p>
+                        <div class="home-btns animate-item animate-delay-3">
+                            <div class="home-btn primary" onclick="goToSlide(1)">浏览作品</div>
+                            <div class="home-btn" onclick="goToSlide(2)">了解我们</div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- 第2页 作品展示 -->
+                <div class="swiper-slide slide-works">
+                    <section>
+                        <div class="works-title animate-item animate-delay-1">
+                            <h2 class="glow-text">选择你的路线</h2>
+                            <p>每个入口都是一段独特的创意之旅</p>
+                        </div>
+                        <div class="branch-container">
+                            <div class="branch-card tilt-card animate-item animate-delay-2" onclick="openShowcase(1)">
+                                <span class="branch-number">01</span>
+                                <div class="branch-icon"><img src="images/封面.jpg" alt="胡佳鸣" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+                                <div class="branch-content">
+                                    <span class="branch-tag">胡佳鸣</span>
+                                    <h3>影像</h3>
+                                    <p>胡佳鸣的影像作品（游戏摄影也算摄影）</p>
+                                    <div class="branch-btn">进入探索 <span>→</span></div>
+                                </div>
+                            </div>
+                            <div class="branch-card tilt-card animate-item animate-delay-3" onclick="openShowcase(2)">
+                                <span class="branch-number">02</span>
+                                <div class="branch-icon"><img src="images/175c9f51e6f7f07ae828d2dfdb23a409.png" alt="黄标" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+                                <div class="branch-content">
+                                    <span class="branch-tag">黄标</span>
+                                    <h3>个人作品</h3>
+                                    <p>黄标的个人作品</p>
+                                    <div class="branch-btn">进入探索 <span>→</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- 第3页 关于我们 -->
+                <div class="swiper-slide slide-about">
+                    <section class="about-container">
+                        <div class="about-title animate-item animate-delay-1">
+                            <h2 class="glow-text">关于我们</h2>
+                            <p>两个热爱创造的灵魂</p>
+                        </div>
+                        <div class="members-container">
+                            <article class="member-card tilt-card animate-item animate-delay-2">
+                                <div class="member-avatar">
+                                    <img src="images/封面.jpg" alt="胡佳鸣" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+                                </div>
+                                <h3 class="member-name">胡佳鸣</h3>
+                                <p class="member-role">全栈开发 · 项目统筹</p>
+                                <p class="member-desc">负责网站整体架构设计、前端开发与交互实现、游戏摄影作品创作、多媒体内容整合与版权合规研究。主导项目从构思到交付全流程。</p>
+                                <div class="member-tags">
+                                    <span class="member-tag">网页设计</span>
+                                    <span class="member-tag">JavaScript</span>
+                                    <span class="member-tag">游戏摄影</span>
+                                    <span class="member-tag">前端架构</span>
+                                </div>
+                            </article>
+                            <article class="member-card tilt-card animate-item animate-delay-3">
+                                <div class="member-avatar">
+                                    <img src="images/175c9f51e6f7f07ae828d2dfdb23a409.png" alt="黄标" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+                                </div>
+                                <h3 class="member-name">黄标</h3>
+                                <p class="member-role">设计 · 内容提供</p>
+                                <p class="member-desc">负责个人作品内容提供，网页设计方向参与，UI/UX设计。热爱美学，追求极致的用户体验。</p>
+                                <div class="member-tags">
+                                    <span class="member-tag">HTML/CSS</span>
+                                    <span class="member-tag">JavaScript</span>
+                                    <span class="member-tag">UI设计</span>
+                                    <span class="member-tag">动效</span>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- 第4页 评论区 -->
+                <div class="swiper-slide slide-comment">
+                    <section class="comment-container">
+                        <div class="comment-header animate-item animate-delay-1">
+                            <h2 class="comment-title glow-text">评论区</h2>
+                            <p class="comment-subtitle">分享你的想法，留下你的足迹</p>
+                        </div>
+                        <div class="comment-form animate-item animate-delay-2">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="commentName" placeholder="你的昵称 *" maxlength="20">
+                                    <div class="error-msg" id="nameError">请输入昵称</div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" id="commentEmail" placeholder="电子邮箱（选填）">
+                                    <div class="error-msg" id="emailError">邮箱格式不正确</div>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 14px;">
+                                <textarea id="commentMessage" placeholder="写下你的留言 *" maxlength="500"></textarea>
+                                <div class="error-msg" id="msgError">请输入留言内容</div>
+                            </div>
+                            <button class="submit-btn" onclick="submitComment()">发布留言</button>
+                        </div>
+                        <div class="comment-list animate-item animate-delay-3" id="commentList">
+                            <!-- JS动态渲染 -->
+                        </div>
+                    </section>
+                </div>
+
+                <!-- 第5页 致谢 -->
+                <div class="swiper-slide slide-thanks">
+                    <section class="thanks-content animate-item animate-delay-1">
+                        <h1 class="thanks-text">谢谢大家</h1>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <!-- 过渡空白区 -->
+        <div class="footer-spacer"></div>
+
+        <!-- 页脚 -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <div class="contact-line">📧 114514@qq.com</div>
+                    <div class="contact-line">📱 114514</div>
+                    <div class="contact-line">💬 微信：114514</div>
+                    <div class="contact-line">📍 114514</div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="copyright-item">
+                    <div class="copyright-title">黄标个人作品</div>
+                    <div class="copyright-text">版权归黄标所有，未经许可不得转载、复制或用于商业用途。</div>
+                </div>
+                <div class="copyright-item">
+                    <div class="copyright-title">胡佳鸣游戏摄影作品</div>
+                    <div class="copyright-text">版权归胡佳鸣与相关游戏厂商共同所有。</div>
+                    <div class="copyright-text legal">
+                        <strong>法律依据：《中华人民共和国著作权法》（2021修正）</strong><br><br>
+                        <strong>第三条</strong>　本法所称的作品，是指文学、艺术和科学领域内具有独创性并能以一定形式表现的智力成果。玩家自主搭建场景、布置景物、选择机位光影构图，投入独创性智力劳动，最终截图满足独创性要件，属于摄影作品。<br><br>
+                        <strong>第十一条</strong>　著作权属于作者，创作作品的自然人是作者。玩家实施了创造性排布与取景拍摄，属于创作者；厂商提供模型、素材、程序基础，也参与了画面形成的创作基础。<br><br>
+                        <strong>第十四条（合作作品条款）</strong>　两人以上合作创作的作品，著作权由合作作者共同享有。最终画面由厂商原始素材与玩家独创性排布构图共同结合而成，构成合作作品，双方共有整体画面著作权。<br><br>
+                        <strong>第十三条（演绎作品条款）</strong>　改编、翻译、注释、整理已有作品而产生的作品，其著作权由改编人享有，但行使著作权时不得侵犯原作品的著作权。厂商单独保有原有模型、贴图等基础素材的著作权。
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 咕咕嘎嘎 | 胡佳鸣 202313008811
+                <div class="footer-icp">粤ICP备202313008811号-1（随机生成，非正式有效备案号）</div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- 回到顶部按钮 -->
+    <div class="back-to-top" id="backToTop" title="回到顶部"></div>
+
+    <!-- 1号展示页 -->
+    <div class="showcase-page showcase-1" id="showcase1">
+        <!-- 背景视频（双缓冲） -->
+        <div class="showcase-bg-video-container">
+            <video class="showcase-bg-video" id="showcaseBgVideo1_1" muted loop playsinline preload="auto" decoding="async">
+                <source src="video/1.mp4" type="video/mp4">
+            </video>
+            <video class="showcase-bg-video" id="showcaseBgVideo1_2" muted loop playsinline preload="none" decoding="async">
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+        <img class="showcase-bg-img" id="showcaseBgImg1" src="">
+        <!-- 背景 -->
+        <div class="showcase-bg showcase-bg-1 active"></div>
+        <div class="showcase-bg showcase-bg-2"></div>
+        <div class="showcase-bg showcase-bg-3"></div>
+        <div class="bg-overlay"></div>
+        <div class="bg-overlay-left"></div>
+        <div class="bg-overlay-right"></div>
+
+        <button class="showcase-close" onclick="closeShowcase(1)">×</button>
+
+        <div class="filter-tabs" id="filterTabs1">
+            <button class="filter-tab active" onclick="applyCarouselFilter(1, '全部', this)">全部</button>
+            <button class="filter-tab" onclick="applyCarouselFilter(1, '影像', this)">影像</button>
+            <button class="filter-tab" onclick="applyCarouselFilter(1, '设计', this)">设计</button>
+            <button class="filter-tab" onclick="applyCarouselFilter(1, '封面', this)">封面</button>
+        </div>
+
+        <div class="carousel-header">
+            <span class="tag">NOW PLAYING</span>
+            <h3 id="carouselTitle1">Kards</h3>
+        </div>
+
+        <div class="carousel-stage" id="stage1">
+            <div class="carousel-inner" id="inner1">
+                <figure class="carousel-panel" data-index="0" data-type="video" data-video="1.mp4">
+                    <video src="video/1.mp4" loop muted playsinline preload="auto" decoding="async"></video>
+                    <figcaption class="panel-label">
+                        <h4>影像作品一</h4>
+                        <p>游戏摄影：光影叙事</p>
+                    </figcaption>
+                </figure>
+                <figure class="carousel-panel" data-index="1" data-type="video" data-video="2.mp4">
+                    <video loop muted playsinline preload="none" decoding="async"></video>
+                    <figcaption class="panel-label">
+                        <h4>影像作品二</h4>
+                        <p>游戏摄影：构图之美</p>
+                    </figcaption>
+                </figure>
+                <figure class="carousel-panel" data-index="2" data-type="video" data-video="3.mp4">
+                    <video loop muted playsinline preload="none" decoding="async"></video>
+                    <figcaption class="panel-label">
+                        <h4>影像作品三</h4>
+                        <p>画面流转，情绪共振</p>
+                    </figcaption>
+                </figure>
+                <figure class="carousel-panel" data-index="3" data-type="image" data-image="images/4.gif">
+                    <img src="images/4.gif" alt="动态展示">
+                    <figcaption class="panel-label">
+                        <h4>动态展示</h4>
+                        <p>动态影像集锦</p>
+                    </figcaption>
+                </figure>
+                <figure class="carousel-panel" data-index="4" data-type="image" data-image="images/marvis_d0c220ec-ee01-49b8-a7c0-f90a4ca68125.png">
+                    <img src="images/marvis_d0c220ec-ee01-49b8-a7c0-f90a4ca68125.png" alt="作品封面">
+                    <figcaption class="panel-label">
+                        <h4>作品封面</h4>
+                        <p>影像作品封面集</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="carousel-hint">← → 拖拽 / 滚轮 / 键盘</div>
+
+        <div class="carousel-dots" id="dots1">
+            <div class="carousel-dot active" onclick="goToPanel(1, 0)"></div>
+            <div class="carousel-dot" onclick="goToPanel(1, 1)"></div>
+            <div class="carousel-dot" onclick="goToPanel(1, 2)"></div>
+            <div class="carousel-dot" onclick="goToPanel(1, 3)"></div>
+            <div class="carousel-dot" onclick="goToPanel(1, 4)"></div>
+        </div>
+    </div>
+
+    <!-- 2号展示页 -->
+    <div class="showcase-page showcase-2" id="showcase2">
+        <!-- 背景视频（双缓冲） -->
+        <div class="showcase-bg-video-container">
+            <video class="showcase-bg-video" id="showcaseBgVideo2_1" muted loop playsinline preload="auto" decoding="async">
+                <source src="video/封面去水印.mp4" type="video/mp4">
+            </video>
+            <video class="showcase-bg-video" id="showcaseBgVideo2_2" muted loop playsinline preload="none" decoding="async">
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+        <img class="showcase-bg-img" id="showcaseBgImg2" src="">
+        <!-- 背景 -->
+        <div class="showcase-bg showcase-bg-1 active"></div>
+        <div class="showcase-bg showcase-bg-2"></div>
+        <div class="showcase-bg showcase-bg-3"></div>
+        <div class="bg-overlay"></div>
+        <div class="bg-overlay-left"></div>
+        <div class="bg-overlay-right"></div>
+
+        <button class="showcase-close" onclick="closeShowcase(2)">×</button>
+
+        <div class="filter-tabs" id="filterTabs2">
+            <button class="filter-tab active" onclick="applyCarouselFilter(2, '全部', this)">全部</button>
+            <button class="filter-tab" onclick="applyCarouselFilter(2, '影像', this)">影像</button>
+            <button class="filter-tab" onclick="applyCarouselFilter(2, '设计', this)">设计</button>
+            <button class="filter-tab" onclick="applyCarouselFilter(2, '封面', this)">封面</button>
+        </div>
+
+        <div class="carousel-header">
+            <span class="tag">NOW PLAYING</span>
+            <h3 id="carouselTitle2">个人作品</h3>
+        </div>
+
+        <div class="carousel-stage" id="stage2">
+            <div class="carousel-inner" id="inner2">
+                <figure class="carousel-panel" data-index="0" data-type="video" data-video="封面去水印.mp4">
+                    <video src="video/封面去水印.mp4" loop muted playsinline preload="auto" decoding="async"></video>
+                    <figcaption class="panel-label">
+                        <h4>个人作品封面</h4>
+                        <p>黄标作品封面展示</p>
+                    </figcaption>
+                </figure>
+                <figure class="carousel-panel" data-index="1" data-type="video" data-video="开头.mp4">
+                    <video loop muted playsinline preload="none" decoding="async"></video>
+                    <figcaption class="panel-label">
+                        <h4>开场动画</h4>
+                        <p>作品开场视频</p>
+                    </figcaption>
+                </figure>
+                <figure class="carousel-panel" data-index="2" data-type="video" data-video="2719fe22ad04ee1240ac1d58ca4ea621.mp4">
+                    <video loop muted playsinline preload="none" decoding="async"></video>
+                    <figcaption class="panel-label">
+                        <h4>精彩时刻</h4>
+                        <p>个人高光集锦</p>
+                    </figcaption>
+                </figure>
+                <figure class="carousel-panel" data-index="3" data-type="image" data-image="images/175c9f51e6f7f07ae828d2dfdb23a409.png">
+                    <img src="images/175c9f51e6f7f07ae828d2dfdb23a409.png" alt="个人海报">
+                    <figcaption class="panel-label">
+                        <h4>个人海报</h4>
+                        <p>黄标个人形象海报</p>
+                    </figcaption>
+                </figure>
+                <figure class="carousel-panel" data-index="4" data-type="image" data-image="images/286e4aa8914a5761a979b5780adea020.png">
+                    <img src="images/286e4aa8914a5761a979b5780adea020.png" alt="作品展示">
+                    <figcaption class="panel-label">
+                        <h4>作品展示</h4>
+                        <p>个人作品图集</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="carousel-hint">← → 拖拽 / 滚轮 / 键盘</div>
+
+        <div class="carousel-dots" id="dots2">
+            <div class="carousel-dot active" onclick="goToPanel(2, 0)"></div>
+            <div class="carousel-dot" onclick="goToPanel(2, 1)"></div>
+            <div class="carousel-dot" onclick="goToPanel(2, 2)"></div>
+            <div class="carousel-dot" onclick="goToPanel(2, 3)"></div>
+            <div class="carousel-dot" onclick="goToPanel(2, 4)"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

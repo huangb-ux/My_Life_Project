@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄标设计作品展示 - 咕咕嘎嘎</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="showcase-standalone">
+    <!-- 展示页主体 -->
+    <!-- 背景视频（双缓冲） -->
+    <div class="showcase-bg-video-container">
+        <video class="showcase-bg-video" id="showcaseBgVideo2_1" muted loop playsinline preload="auto" decoding="async">
+            <source src="video/封面去水印.mp4" type="video/mp4">
+        </video>
+        <video class="showcase-bg-video" id="showcaseBgVideo2_2" muted loop playsinline preload="none" decoding="async">
+            <source src="" type="video/mp4">
+        </video>
+    </div>
+    <img class="showcase-bg-img" id="showcaseBgImg2" src="">
+    <!-- 背景 -->
+    <div class="showcase-bg showcase-bg-1 active"></div>
+    <div class="showcase-bg showcase-bg-2"></div>
+    <div class="showcase-bg showcase-bg-3"></div>
+    <div class="bg-overlay"></div>
+    <div class="bg-overlay-left"></div>
+    <div class="bg-overlay-right"></div>
+
+    <div class="filter-tabs" id="filterTabs2">
+        <button class="filter-tab active" onclick="applyShowcaseFilter('全部', this)">全部</button>
+        <button class="filter-tab" onclick="applyShowcaseFilter('影像', this)">影像</button>
+        <button class="filter-tab" onclick="applyShowcaseFilter('设计', this)">设计</button>
+        <button class="filter-tab" onclick="applyShowcaseFilter('封面', this)">封面</button>
+    </div>
+
+    <div class="carousel-header">
+        <span class="tag">设计</span>
+        <h3 id="carouselTitle2">个人作品封面</h3>
+    </div>
+
+    <div class="carousel-stage" id="stage2">
+        <div class="carousel-inner" id="inner2">
+            <figure class="carousel-panel" data-index="0" data-type="video" data-video="封面去水印.mp4">
+                <video src="video/封面去水印.mp4" loop muted playsinline preload="auto" decoding="async"></video>
+                <figcaption class="panel-label">
+                    <h4>个人作品封面</h4>
+                    <p>黄标作品封面展示</p>
+                </figcaption>
+            </figure>
+            <figure class="carousel-panel" data-index="1" data-type="video" data-video="开头.mp4">
+                <video loop muted playsinline preload="none" decoding="async"></video>
+                <figcaption class="panel-label">
+                    <h4>开场动画</h4>
+                    <p>作品开场视频</p>
+                </figcaption>
+            </figure>
+            <figure class="carousel-panel" data-index="2" data-type="video" data-video="2719fe22ad04ee1240ac1d58ca4ea621.mp4">
+                <video loop muted playsinline preload="none" decoding="async"></video>
+                <figcaption class="panel-label">
+                    <h4>精彩时刻</h4>
+                    <p>个人高光集锦</p>
+                </figcaption>
+            </figure>
+            <figure class="carousel-panel" data-index="3" data-type="image" data-image="images/175c9f51e6f7f07ae828d2dfdb23a409.png">
+                <img src="images/175c9f51e6f7f07ae828d2dfdb23a409.png" alt="个人海报">
+                <figcaption class="panel-label">
+                    <h4>个人海报</h4>
+                    <p>黄标个人形象海报</p>
+                </figcaption>
+            </figure>
+            <figure class="carousel-panel" data-index="4" data-type="image" data-image="images/286e4aa8914a5761a979b5780adea020.png">
+                <img src="images/286e4aa8914a5761a979b5780adea020.png" alt="作品展示">
+                <figcaption class="panel-label">
+                    <h4>作品展示</h4>
+                    <p>个人作品图集</p>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="carousel-hint">← → 拖拽 / 滚轮 / 键盘切换作品</div>
+
+    <div class="carousel-dots" id="dots2">
+        <div class="carousel-dot active" onclick="goToPanelShowcase(0)"></div>
+        <div class="carousel-dot" onclick="goToPanelShowcase(1)"></div>
+        <div class="carousel-dot" onclick="goToPanelShowcase(2)"></div>
+        <div class="carousel-dot" onclick="goToPanelShowcase(3)"></div>
+        <div class="carousel-dot" onclick="goToPanelShowcase(4)"></div>
+    </div>
+
+    <!-- 装饰效果 -->
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+    <div class="corner-decor top-left"></div>
+    <div class="corner-decor top-right"></div>
+    <div class="corner-decor bottom-left"></div>
+    <div class="corner-decor bottom-right"></div>
+
+    <!-- 关闭按钮 -->
+    <div class="showcase-close" onclick="location.href='index.html'">✕</div>
+
+    <script src="js/carousel.js"></script>
+    <script>
+        // ========== 展示页独立初始化 ==========
+        let carouselInstance = null;
+
+        function goToPanelShowcase(index) {
+            if (carouselInstance) carouselInstance.goTo(index);
+        }
+
+        function applyShowcaseFilter(category, btn) {
+            if (!carouselInstance) return;
+            var tabs = document.querySelectorAll('#filterTabs2 .filter-tab');
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            btn.classList.add('active');
+            carouselInstance.applyFilter(category);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化展示页背景视频
+            initShowcaseBgVideo(2);
+
+            // 初始化旋转木马（传入分类）
+            carouselInstance = initCarousel(2, panelTitles2, panelCategories2);
+
+            // 键盘事件
+            document.addEventListener('keydown', function(e) {
+                if (!carouselInstance) return;
+                if (e.key === 'ArrowRight') { carouselInstance.next(); e.preventDefault(); }
+                if (e.key === 'ArrowLeft') { carouselInstance.prev(); e.preventDefault(); }
+                if (e.key === 'Escape') { location.href = 'index.html'; }
+            });
+
+            // 用户点击播放视频
+            document.addEventListener('click', function() {
+                const state = showcaseBgVideos[2];
+                if (state.video1 && state.video1.paused) state.video1.play().catch(function() {});
+                if (state.video2 && state.video2.paused) state.video2.play().catch(function() {});
+                document.querySelectorAll('.carousel-panel video').forEach(function(video) {
+                    video.play().catch(function() {});
+                });
+            }, { once: true });
+        });
+    </script>
+</body>
+</html>

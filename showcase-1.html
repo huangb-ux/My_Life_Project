@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>胡佳鸣影像作品展示 - 咕咕嘎嘎</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="showcase-standalone">
+    <!-- 顶部导航 -->
+    <header class="site-header">
+        <nav class="top-nav">
+            <div class="logo-wrapper" onclick="location.href='index.html'">
+                <img class="logo-img" src="images/logo.png" alt="咕咕嘎嘎">
+                <span class="site-name">咕咕嘎嘎</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">返回首页</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 展示页主体 -->
+    <!-- 背景视频（双缓冲） -->
+    <div class="showcase-bg-video-container">
+        <video class="showcase-bg-video" id="showcaseBgVideo1_1" muted loop playsinline preload="auto" decoding="async">
+            <source src="video/1.mp4" type="video/mp4">
+        </video>
+        <video class="showcase-bg-video" id="showcaseBgVideo1_2" muted loop playsinline preload="none" decoding="async">
+            <source src="" type="video/mp4">
+        </video>
+    </div>
+    <img class="showcase-bg-img" id="showcaseBgImg1" src="">
+    <!-- 背景 -->
+    <div class="showcase-bg showcase-bg-1 active"></div>
+    <div class="showcase-bg showcase-bg-2"></div>
+    <div class="showcase-bg showcase-bg-3"></div>
+    <div class="bg-overlay"></div>
+    <div class="bg-overlay-left"></div>
+    <div class="bg-overlay-right"></div>
+
+    <div class="filter-tabs" id="filterTabs1">
+        <button class="filter-tab active" onclick="applyShowcaseFilter('全部', this)">全部</button>
+        <button class="filter-tab" onclick="applyShowcaseFilter('影像', this)">影像</button>
+        <button class="filter-tab" onclick="applyShowcaseFilter('设计', this)">设计</button>
+        <button class="filter-tab" onclick="applyShowcaseFilter('封面', this)">封面</button>
+    </div>
+
+    <div class="carousel-header">
+        <span class="tag">NOW PLAYING</span>
+        <h3 id="carouselTitle1">影像作品一</h3>
+    </div>
+
+    <div class="carousel-stage" id="stage1">
+        <div class="carousel-inner" id="inner1">
+            <figure class="carousel-panel" data-index="0" data-type="video" data-video="1.mp4">
+                <video src="video/1.mp4" loop muted playsinline preload="auto" decoding="async"></video>
+                <figcaption class="panel-label">
+                    <h4>影像作品一</h4>
+                    <p>游戏摄影：光影叙事</p>
+                </figcaption>
+            </figure>
+            <figure class="carousel-panel" data-index="1" data-type="video" data-video="2.mp4">
+                <video loop muted playsinline preload="none" decoding="async"></video>
+                <figcaption class="panel-label">
+                    <h4>影像作品二</h4>
+                    <p>游戏摄影：构图之美</p>
+                </figcaption>
+            </figure>
+            <figure class="carousel-panel" data-index="2" data-type="video" data-video="3.mp4">
+                <video loop muted playsinline preload="none" decoding="async"></video>
+                <figcaption class="panel-label">
+                    <h4>影像作品三</h4>
+                    <p>画面流转，情绪共振</p>
+                </figcaption>
+            </figure>
+            <figure class="carousel-panel" data-index="3" data-type="image" data-image="images/4.gif">
+                <img src="images/4.gif" alt="动态展示">
+                <figcaption class="panel-label">
+                    <h4>动态展示</h4>
+                    <p>动态影像集锦</p>
+                </figcaption>
+            </figure>
+            <figure class="carousel-panel" data-index="4" data-type="image" data-image="images/marvis_d0c220ec-ee01-49b8-a7c0-f90a4ca68125.png">
+                <img src="images/marvis_d0c220ec-ee01-49b8-a7c0-f90a4ca68125.png" alt="作品封面">
+                <figcaption class="panel-label">
+                    <h4>作品封面</h4>
+                    <p>影像作品封面集</p>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="carousel-hint">← → 拖拽 / 滚轮 / 键盘切换作品</div>
+
+    <div class="carousel-dots" id="dots1">
+        <div class="carousel-dot active" onclick="goToPanelShowcase(0)"></div>
+        <div class="carousel-dot" onclick="goToPanelShowcase(1)"></div>
+        <div class="carousel-dot" onclick="goToPanelShowcase(2)"></div>
+        <div class="carousel-dot" onclick="goToPanelShowcase(3)"></div>
+        <div class="carousel-dot" onclick="goToPanelShowcase(4)"></div>
+    </div>
+
+    <!-- 装饰效果 -->
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+    <div class="corner-decor top-left"></div>
+    <div class="corner-decor top-right"></div>
+    <div class="corner-decor bottom-left"></div>
+    <div class="corner-decor bottom-right"></div>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>联系我们</h4>
+                <div class="contact-line">📧 114514@qq.com</div>
+                <div class="contact-line">📱 114514</div>
+                <div class="contact-line">💬 微信：114514</div>
+                <div class="contact-line">📍 114514</div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="copyright-item">
+                <div class="copyright-title">胡佳鸣游戏摄影作品</div>
+                <div class="copyright-text">版权归胡佳鸣与相关游戏厂商共同所有。</div>
+                <div class="copyright-text legal">
+                    <strong>法律依据：《中华人民共和国著作权法》（2021修正）</strong><br><br>
+                    <strong>第三条</strong>　本法所称的作品，是指文学、艺术和科学领域内具有独创性并能以一定形式表现的智力成果。玩家自主搭建场景、布置景物、选择机位光影构图，投入独创性智力劳动，最终截图满足独创性要件，属于摄影作品。<br><br>
+                    <strong>第十一条</strong>　著作权属于作者，创作作品的自然人是作者。玩家实施了创造性排布与取景拍摄，属于创作者；厂商提供模型、素材、程序基础，也参与了画面形成的创作基础。<br><br>
+                    <strong>第十四条（合作作品条款）</strong>　两人以上合作创作的作品，著作权由合作作者共同享有。最终画面由厂商原始素材与玩家独创性排布构图共同结合而成，构成合作作品，双方共有整体画面著作权。<br><br>
+                    <strong>第十三条（演绎作品条款）</strong>　改编、翻译、注释、整理已有作品而产生的作品，其著作权由改编人享有，但行使著作权时不得侵犯原作品的著作权。厂商单独保有原有模型、贴图等基础素材的著作权。
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 咕咕嘎嘎 | 胡佳鸣 202313008811
+            <div class="footer-icp">粤ICP备202313008811号-1（随机生成，非正式有效备案号）</div>
+        </div>
+    </footer>
+
+    <script src="js/carousel.js"></script>
+    <script>
+        // ========== 展示页独立初始化 ==========
+        let carouselInstance = null;
+
+        function goToPanelShowcase(index) {
+            if (carouselInstance) carouselInstance.goTo(index);
+        }
+
+        function applyShowcaseFilter(category, btn) {
+            if (!carouselInstance) return;
+            var tabs = document.querySelectorAll('#filterTabs1 .filter-tab');
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            btn.classList.add('active');
+            carouselInstance.applyFilter(category);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化展示页背景视频
+            initShowcaseBgVideo(1);
+
+            // 初始化旋转木马（传入分类）
+            carouselInstance = initCarousel(1, panelTitles1, panelCategories1);
+
+            // 键盘事件
+            document.addEventListener('keydown', function(e) {
+                if (!carouselInstance) return;
+                if (e.key === 'ArrowRight') { carouselInstance.next(); e.preventDefault(); }
+                if (e.key === 'ArrowLeft') { carouselInstance.prev(); e.preventDefault(); }
+            });
+
+            // 用户点击播放视频
+            document.addEventListener('click', function() {
+                const state = showcaseBgVideos[1];
+                if (state.video1 && state.video1.paused) state.video1.play().catch(function() {});
+                if (state.video2 && state.video2.paused) state.video2.play().catch(function() {});
+                document.querySelectorAll('.carousel-panel video').forEach(function(video) {
+                    video.play().catch(function() {});
+                });
+            }, { once: true });
+        });
+    </script>
+</body>
+</html>
